@@ -44,27 +44,40 @@ public class Viewport {
     public MouseAdapter mouseAdapter(JPanel observer) {
         return new MouseAdapter() {
 
-            private int xPrev = 0;
-            private int yPrev = 0;
+            private int prevX = 0;
+            private int prevY = 0;
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                xPrev = e.getX();
-                yPrev = e.getY();
+                prevX = e.getX();
+                prevY = e.getY();
             }
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                x -= panSpeed * (e.getX() - xPrev);
-                y -= panSpeed * (e.getY() - yPrev);
-                xPrev = e.getX();
-                yPrev = e.getY();
+                x -= panSpeed * (e.getX() - prevX);
+                y -= panSpeed * (e.getY() - prevY);
+                prevX = e.getX();
+                prevY = e.getY();
                 observer.repaint();
             }
 
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                scale += e.getWheelRotation() * e.getScrollAmount();
+                double prevScale = scale;
+
+                scale -= e.getWheelRotation() * e.getScrollAmount() * Math.exp(scale/1000.0);
+                if (scale < 8)
+                    scale = 8;
+                if (scale > 200)
+                    scale = 200;
+
+                double displacementX = getWidth() - scale * (double) getWidth() / prevScale;
+                double displacementY = getHeight() - scale * (double) getHeight() / prevScale;
+                x -= (prevX / (double) getWidth()) * (displacementX / prevScale);
+                y -= (prevY / (double) getHeight()) * (displacementY / prevScale);
+                System.out.println(displacementX);
+                System.out.println((prevX / (double) getWidth()) * (displacementX / prevScale));
                 observer.repaint();
             }
         };

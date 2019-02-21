@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class LidarView extends JPanel {
 
     private Viewport viewport;
+    private Thread provider;
     private ArrayList<LidarPoint> points;
 
     public LidarView() {
@@ -18,7 +19,9 @@ public class LidarView extends JPanel {
         addMouseMotionListener(adapter);
         addMouseWheelListener(adapter);
 
-        points = LidarGenerator.generatePosition(40);
+        points = LidarGenerator.generate(40);
+        provider = LidarGenerator.update(points, this);
+        provider.start();
     }
 
     @Override
@@ -32,8 +35,8 @@ public class LidarView extends JPanel {
     private void drawGrid(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
         int s = viewport.getScale();
-        int w = (int) viewport.getWidth() / s;
-        int h = (int) viewport.getHeight() / s;
+        int w = viewport.getWidth() / s;
+        int h = viewport.getHeight() / s;
         for (int x = -1; x < w + 1; x++) {
             for (int y = -1; y < h + 1; y++) {
                 g.drawRect(viewport.relX(0) % s + x * s, viewport.relY(0) % s + y * s, s, s);
@@ -48,12 +51,18 @@ public class LidarView extends JPanel {
     }
 
     private void drawData(Graphics g) {
+        LidarPoint last = points.get(points.size() - 1);
+        int prevX = viewport.relX(last.distance * Math.cos(last.angle));
+        int prevY = viewport.relY(last.distance * Math.sin(last.angle));
+
         g.setColor(Color.RED);
         for (LidarPoint p : points) {
-            double x = p.distance * Math.cos(p.angle);
-            double y = p.distance * Math.sin(p.angle);
+            int x = viewport.relX(p.distance * Math.cos(p.angle));
+            int y = viewport.relY(p.distance * Math.sin(p.angle));
             int d = viewport.relSize(0.1);
-            g.fillOval(viewport.relX(x), viewport.relY(y), d, d);
+            g.fillOval(x - d / 2, y - d / 2, d, d);
+            g.drawLine(prevX, prevY, x, y);
+            prevX = x; prevY = y;
         }
     }
 }
