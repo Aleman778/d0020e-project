@@ -9,11 +9,11 @@ public class MainFrame extends JFrame {
     private LidarView view;
 
     public MainFrame() {
-        setup();
+        SwingUtilities.invokeLater(() -> setup());
     }
 
     private void setup() {
-        setTitle("LiDAR HMI");
+        setTitle("LiDAR Viewer");
         setSize(640, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
