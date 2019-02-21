@@ -2,22 +2,73 @@ package consumer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.util.ArrayList;
 
 public class LidarView extends JPanel {
 
+    private int xOffset = 0;
+    private int yOffset = 0;
+    private int scale = 64;
+
+    private ArrayList<LidarPoint> points;
+
     public LidarView() {
         setName("LidarView");
+        setupEvents();
+
+        points = new ArrayList<>();
+        points.add(new LidarPoint(100.0, -Math.PI/4.0+Math.PI/2.0));
+    }
+
+    private void setupEvents() {
+        MouseAdapter adapter = new MouseAdapter() {
+
+            private int xPrev = 0;
+            private int yPrev = 0;
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                xPrev = e.getX();
+                yPrev = e.getY();
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                xOffset += e.getX() - xPrev;
+                yOffset += e.getY() - yPrev;
+                xPrev = e.getX();
+                yPrev = e.getY();
+                repaint();
+                System.out.println("hej " + xOffset);
+            }
+
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                scale += e.getWheelRotation() * e.getScrollAmount();
+                repaint();
+                System.out.println("hej " + scale);
+            }
+        };
+        addMouseMotionListener(adapter);
+        addMouseWheelListener(adapter);
     }
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.BLACK);
-        int width=64;
-        int height=48;
-        for(int x=0;x<10;x++) {
-            for(int y=0;y<10;y++) {
-                g.drawRect(x*width,y*height,width,height);
+        g.clearRect(0,0,HMI.frame.getWidth(), HMI.frame.getHeight());
+        g.setColor(Color.GRAY);
+        for (int x = -scale; x < HMI.frame.getWidth() / scale + 1; x++) {
+            for (int y = -scale; y < HMI.frame.getHeight() / scale + 1; y++) {
+                g.drawRect(xOffset % scale + x * scale,yOffset % scale + y * scale, scale, scale);
             }
+        }
+
+        g.setColor(Color.RED);
+        for (LidarPoint p : points) {
+            g.fillOval((int) (p.distance * Math.cos(p.angle)), (int) (p.distance * Math.sin(p.angle)), 6, 6);
         }
     }
 }
