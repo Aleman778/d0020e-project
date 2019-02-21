@@ -19,7 +19,7 @@ public class LidarView extends JPanel {
         setName("LidarView");
         setupEvents();
 
-        points = new ArrayList<>();
+        points = LidarGenerator.generatePosition(30);
         points.add(new LidarPoint(100.0, -Math.PI/4.0+Math.PI/2.0));
     }
 
@@ -68,7 +68,7 @@ public class LidarView extends JPanel {
 
         g.setColor(Color.RED);
         for (LidarPoint p : points) {
-            g.fillOval((int) (p.distance * Math.cos(p.angle)), (int) (p.distance * Math.sin(p.angle)), 6, 6);
+            g.fillOval((int) (p.distance *scale* Math.cos(p.angle))+HMI.frame.getWidth()/2, (int) (p.distance *scale* Math.sin(p.angle))+HMI.frame.getHeight()/2, 6, 6);
         }
     }
 }
