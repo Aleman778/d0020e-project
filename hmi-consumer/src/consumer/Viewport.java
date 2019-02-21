@@ -7,16 +7,13 @@ import java.awt.event.MouseWheelEvent;
 
 public class Viewport {
 
-    public double x, y, w, h;
+    public double x, y;
     public double scale;
-
     public double panSpeed = 0.01;
 
     public Viewport() {
         x = -HMI.frame.getWidth() / 128.0;
         y = -HMI.frame.getHeight() / 128.0;
-        w = HMI.frame.getWidth();
-        h = HMI.frame.getHeight();
         scale = 64.0;
     }
 
@@ -30,6 +27,14 @@ public class Viewport {
 
     public int relSize(double s) {
         return (int) (s * scale);
+    }
+
+    public int getWidth() {
+        return HMI.frame.getWidth();
+    }
+
+    public int getHeight() {
+        return HMI.frame.getHeight();
     }
 
     public int getScale() {

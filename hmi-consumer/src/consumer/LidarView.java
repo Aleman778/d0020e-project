@@ -1,7 +1,5 @@
 package consumer;
 
-import javafx.beans.Observable;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -33,11 +31,12 @@ public class LidarView extends JPanel {
 
     private void drawGrid(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
-        int w = (int) (viewport.w / viewport.scale);
-        int h = (int) (viewport.h / viewport.scale);
-        for (int x = -w; x < w; x++) {
-            for (int y = -h - x % 2; y < h; y += 2) {
-                g.fillRect(viewport.relX(x), viewport.relY(y), viewport.getScale(), viewport.getScale());
+        int s = viewport.getScale();
+        int w = (int) viewport.getWidth() / s;
+        int h = (int) viewport.getHeight() / s;
+        for (int x = -1; x < w + 1; x++) {
+            for (int y = -1; y < h + 1; y++) {
+                g.drawRect(viewport.relX(0) % s + x * s, viewport.relY(0) % s + y * s, s, s);
             }
         }
     }
@@ -53,7 +52,7 @@ public class LidarView extends JPanel {
         for (LidarPoint p : points) {
             double x = p.distance * Math.cos(p.angle);
             double y = p.distance * Math.sin(p.angle);
-            int d = viewport.relSize(0.01);
+            int d = viewport.relSize(0.1);
             g.fillOval(viewport.relX(x), viewport.relY(y), d, d);
         }
     }
