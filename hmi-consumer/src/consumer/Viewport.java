@@ -66,18 +66,16 @@ public class Viewport {
             public void mouseWheelMoved(MouseWheelEvent e) {
                 double prevScale = scale;
 
-                scale -= e.getWheelRotation() * e.getScrollAmount() * Math.exp(scale/1000.0);
+                scale -= e.getWheelRotation() * e.getScrollAmount() * Math.exp(scale/500.0);
                 if (scale < 8)
                     scale = 8;
                 if (scale > 200)
                     scale = 200;
 
-                double displacementX = getWidth() - scale * (double) getWidth() / prevScale;
-                double displacementY = getHeight() - scale * (double) getHeight() / prevScale;
-                x -= (prevX / (double) getWidth()) * (displacementX / prevScale);
-                y -= (prevY / (double) getHeight()) * (displacementY / prevScale);
-                System.out.println(displacementX);
-                System.out.println((prevX / (double) getWidth()) * (displacementX / prevScale));
+                double dx = getWidth() - scale * (double) getWidth() / prevScale;
+                double dy = getHeight() - scale * (double) getHeight() / prevScale;
+                x -= (prevX / (double) getWidth()) * (dx / scale);
+                y -= (prevY / (double) getHeight()) * (dy / scale);
                 observer.repaint();
             }
         };
