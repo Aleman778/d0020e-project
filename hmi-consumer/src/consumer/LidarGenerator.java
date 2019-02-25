@@ -10,7 +10,7 @@ public class LidarGenerator {
 
         double angle = 0;
         double distance = Math.random() * 3.0 + 1.0;
-        double increment = (numPoints - 1) / Math.PI;
+        double increment = (2.0 * Math.PI) / numPoints;
 
         for(int i = 0; i < numPoints; i++){
             data.add(new LidarPoint(distance, angle));

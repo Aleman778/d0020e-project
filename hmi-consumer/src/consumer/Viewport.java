@@ -1,6 +1,7 @@
 package consumer;
 
 import javax.swing.*;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -41,11 +42,17 @@ public class Viewport {
         return (int) scale;
     }
 
-    public MouseAdapter mouseAdapter(JPanel observer) {
+    public MouseAdapter mouseAdapter(LidarView observer) {
         return new MouseAdapter() {
 
             private int prevX = 0;
             private int prevY = 0;
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                observer.selectPoint(e.getX(), e.getY());
+                observer.repaint();
+            }
 
             @Override
             public void mouseMoved(MouseEvent e) {

@@ -21,7 +21,13 @@ public class MainFrame extends JFrame {
         root.setLayout(new BorderLayout());
         setRootPane(root);
 
-        view = new LidarView();
-        root.add(view);
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("");
+        panel.add(label);
+        root.add(panel, BorderLayout.SOUTH);
+
+        view = new LidarView(label);
+        root.add(view, BorderLayout.CENTER);
+
     }
 }
