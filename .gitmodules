@@ -1,0 +1,6 @@
+[submodule "core-java"]
+	path = core-java
+	url = https://github.com/arrowhead-f/core-java
+[submodule "client-java"]
+	path = client-java
+	url = https://github.com/arrowhead-f/client-java

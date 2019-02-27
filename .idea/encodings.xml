@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/client-java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-java/client-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-java/consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-java/provider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-java/publisher" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-java/subscriber" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/authorization" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/core-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/dnssd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/eventhandler" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/gatekeeper" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/orchestrator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/qos" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/serviceregistry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core-java/serviceregistry_sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/detector-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hmi-consumer" charset="UTF-8" />
   </component>
