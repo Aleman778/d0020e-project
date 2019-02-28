@@ -19,15 +19,14 @@ public class ObjectDetectionMain {
 
 
     //Checks if a datapoint in a LidarPoint list is less than the calibrated value for that datapoint
-    private static void detection(ArrayList<LidarPoint> data){
-        for(int i = 0; i < data.size(); i++){
-            if(data.get(i).distance < ((calibration.get(i).distance)-margin)){
+    private static void detection(ArrayList<LidarPoint> data) {
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).distance < ((calibration.get(i).distance) - margin)) {
                 isDetected = true;
                 return;
-                }
             }
-        isDetected = false;
         }
+        isDetected = false;
     }
 
     public static boolean detected(){ return isDetected;}
