@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        <module>core-java</module>
+        <module>client-java</module>
         <module>hmi-consumer</module>
         <module>detector-provider</module>
     </modules>

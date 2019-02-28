@@ -6,9 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="arrowhead-authorization" />
+        <module name="arrowhead-core-common" />
+        <module name="arrowhead-dnssd" />
+        <module name="arrowhead-eventhandler" />
+        <module name="arrowhead-gatekeeper" />
+        <module name="arrowhead-gateway" />
+        <module name="arrowhead-orchestrator" />
+        <module name="arrowhead-qos" />
+        <module name="arrowhead-serviceregistry" />
+        <module name="arrowhead-serviceregistry-sql" />
+        <module name="client-common" />
         <module name="consumer" />
         <module name="detector-provider" />
+        <module name="hmi-consumer" />
+        <module name="provider" />
+        <module name="publisher" />
+        <module name="subscriber" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="arrowhead-common" target="1.8" />
+      <module name="consumer (1)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
