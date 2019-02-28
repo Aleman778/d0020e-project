@@ -23,14 +23,14 @@ public class ObjectDetectionMain {
         for(int i = 0; i < data.size(); i++){
             if(data.get(i).distance < (calibration.distance-margin)){
                 isDetected = true;
-                break;
+                return;
                 }
             }
         isDetected = false;
         }
     }
 
-    public static boolean detected(){ return isdetected;}
+    public static boolean detected(){ return isDetected;}
 
     public static void main(String args) {
         setup();
