@@ -1,18 +1,19 @@
 package provider;
 
 import java.util.ArrayList;
+
 public class ObjectDetectionMain {
 
-    private int numPoints;
-    private double margin;
-    private boolean objectDetected;
-    private ArrayList<LidarPoint> calibration;
+    private static int numPoints;
+    private static double margin;
+    private static boolean isDetected;
+    private static ArrayList<LidarPoint> calibration;
 
     //Setup for variables.
     private static void setup() {
         numPoints = 10;
         margin = 1.0;
-        objectDetected = false;
+        isDetected = false;
         calibration = generate(numPoints);
     }
 
@@ -20,21 +21,16 @@ public class ObjectDetectionMain {
     //Checks if a datapoint in a LidarPoint list is less than the calibrated value for that datapoint
     private static void detection(ArrayList<LidarPoint> data){
         for(int i = 0; i < data.size(); i++){
-            if(data.get(i) < (calibration-margin) && !objectDetected){
-                objectDetected = true;
+            if(data.get(i).distance < (calibration.distance-margin)){
+                isDetected = true;
                 break;
-            } else {
-                if(data.get(i) > (calibration-margin) && objectDetected)
-                objectDetected = false;
                 }
             }
+        isDetected = false;
         }
     }
 
-    //Returns current value of objectDetected
-    public static boolean detected(){
-        return objectDetected;
-    }
+    public static boolean detected(){ return isdetected;}
 
     public static void main(String args) {
         setup();
