@@ -1,6 +1,5 @@
-package provider;
+package eu.arrowhead.detector.provider;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class LidarGenerator {
@@ -20,24 +19,5 @@ public class LidarGenerator {
             angle += increment;
         }
         return data;
-    }
-
-
-    public static Thread update(ArrayList<LidarPoint> data, JPanel observer) {
-        return new Thread(() -> {
-            while (HMI.frame.isVisible()) {
-                for (LidarPoint p : data) {
-                    p.distance += Math.random() * 0.04 - 0.02;
-                    if (p.distance < 0.5)
-                        p.distance = 0.5;
-                }
-                observer.repaint();
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 }

@@ -1,4 +1,4 @@
-package provider;
+package eu.arrowhead.detector.provider;
 
 import java.util.ArrayList;
 
@@ -14,14 +14,14 @@ public class ObjectDetectionMain {
         numPoints = 10;
         margin = 1.0;
         isDetected = false;
-        calibration = generate(numPoints);
+        calibration = LidarGenerator.generate(numPoints);
     }
 
 
     //Checks if a datapoint in a LidarPoint list is less than the calibrated value for that datapoint
     private static void detection(ArrayList<LidarPoint> data){
         for(int i = 0; i < data.size(); i++){
-            if(data.get(i).distance < (calibration.distance-margin)){
+            if(data.get(i).distance < ((calibration.get(i).distance)-margin)){
                 isDetected = true;
                 return;
                 }
@@ -35,7 +35,7 @@ public class ObjectDetectionMain {
     public static void main(String args) {
         setup();
         while(true) {
-            detection(generate(numPoints));
+            detection(LidarGenerator.generate(numPoints));
         }
     }
 

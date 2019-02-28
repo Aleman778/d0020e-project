@@ -1,6 +1,4 @@
-package provider;
-
-import java.awt.*;
+package eu.arrowhead.detector.provider;
 
 public class LidarPoint {
 
@@ -15,14 +13,5 @@ public class LidarPoint {
     public LidarPoint(LidarPoint copy) {
         this.distance = copy.distance;
         this.angle = copy.angle;
-    }
-
-    public Rectangle getBounds(Viewport viewport) {
-        Rectangle bounds = new Rectangle();
-        int diameter = viewport.relSize(0.1);
-        bounds.x = viewport.relX(distance * Math.cos(angle)) - (int) diameter/2;
-        bounds.y = viewport.relY(distance * Math.sin(angle)) - (int) diameter/2;
-        bounds.width = (int) diameter; bounds.height = (int) diameter;
-        return bounds;
     }
 }
