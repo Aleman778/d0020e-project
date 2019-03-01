@@ -20,6 +20,7 @@
         <module name="detector-provider" />
         <module name="hmi-consumer" />
         <module name="lidar-common" />
+        <module name="lidargen-provider" />
         <module name="provider" />
         <module name="publisher" />
         <module name="subscriber" />

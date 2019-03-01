@@ -1,0 +1,28 @@
+[
+  {
+    "service": {
+      "serviceDefinition": "LidarGenerator",
+      "interfaces": [
+        "JSON"
+      ],
+      "serviceMetadata": {
+        "distanceUnit": "meters",
+        "angleUnit": "radians"
+      }
+    },
+    "consumer": {
+      "systemName": "hmi_consumer",
+      "address": "localhost",
+      "port": 8080,
+      "authenticationInfo": "null"
+    },
+    "providerSystem": {
+      "systemName": "InsecureLidarGenerator",
+      "address": "0.0.0.0",
+      "port": 8460
+    },
+    "priority": 1,
+    "defaultEntry": false,
+    "attributes": {}
+  }
+]

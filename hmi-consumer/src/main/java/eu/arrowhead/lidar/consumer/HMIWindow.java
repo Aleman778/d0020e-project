@@ -2,6 +2,7 @@ package eu.arrowhead.lidar.consumer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class HMIWindow extends JFrame {
 
@@ -27,15 +28,25 @@ public class HMIWindow extends JFrame {
         setRootPane(root);
 
         statusPanel = new JPanel();
+        statusPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         statusLabel = new JLabel("Ready");
-        statusPanel.add(statusLabel, FlowLayout.LEFT);
+        statusPanel.add(statusLabel);
         root.add(statusPanel, BorderLayout.SOUTH);
         statusMessage = "Ready";
 
         view = new LidarView();
         root.add(view, BorderLayout.CENTER);
 
-        HMIConsumer.findService();
+        JButton buttonRetry = new JButton("Try again");
+        buttonRetry.addActionListener((ActionEvent e) -> {
+            setStatus("Retrying...");
+            HMIConsumer.findService();
+        });
+        statusPanel.add(buttonRetry);
+
+
+        //HMIConsumer.findService();
+
     }
 
     /**

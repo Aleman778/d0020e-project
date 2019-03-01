@@ -38,7 +38,7 @@ public class HMIConsumer {
         isSecure = ServiceUtility.checkSecureMode(args);
         orchestratorUrl = ServiceUtility.getOrchestratorUrl(props, isSecure);
         srf = compileSRF();
-
+        providerUrl = ServiceUtility.sendOrchestrationRequest(srf, orchestratorUrl);
         hmi = new HMIWindow();
         hmi.setVisible(true);
     }
@@ -52,12 +52,7 @@ public class HMIConsumer {
     }
 
     public static void findService() {
-        try {
-            providerUrl = ServiceUtility.sendOrchestrationRequest(srf, orchestratorUrl);
-        } catch (Exception e) {
-            e.printStackTrace();
-            hmi.setStatus("Error: " + e.getMessage());
-        }
+
     }
 
     public static List<LidarPoint> consumeService() {
@@ -86,7 +81,7 @@ public class HMIConsumer {
         if (isSecure) {
             metadata.put("security", "token");
         }
-        ArrowheadService service = new ArrowheadService("IndoorTemperature", Collections.singleton("json"), metadata);
+        ArrowheadService service = new ArrowheadService("LidarGenerator", Collections.singleton("json"), metadata);
 
         Map<String, Boolean> orchestrationFlags = new HashMap<>();
         orchestrationFlags.put("overrideStore", true);
