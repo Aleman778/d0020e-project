@@ -1,5 +1,7 @@
 package eu.arrowhead.lidar.consumer;
 
+import eu.arrowhead.lidar.common.LidarPoint;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -9,42 +11,47 @@ public class LidarView extends JPanel {
 
     private Viewport viewport;
     private Thread provider;
-    private JLabel status;
     private LidarPoint selected;
     private ArrayList<LidarPoint> points;
 
-    public LidarView(JLabel label) {
+    public LidarView() {
         setName("LidarView");
 
-        status = label;
         viewport = new Viewport();
         MouseAdapter adapter = viewport.mouseAdapter(this);
         addMouseListener(adapter);
         addMouseMotionListener(adapter);
         addMouseWheelListener(adapter);
-
-        points = LidarGenerator.generate(40);
-        provider = LidarGenerator.update(points, this);
-        provider.start();
     }
 
     public void selectPoint(int x, int y) {
         selected = null;
-        status.setText("");
+        HMIConsumer.hmi.restoreStatus();
         for (LidarPoint p : points) {
-            if (p.getBounds(viewport).contains(x, y)) {
+            if (getBounds().contains(x, y)) {
                 String info = "Selected data point - distance: " + p.distance + " meters, angle: " + Math.toDegrees(p.angle) + " degrees";
-                status.setText(info);
+                HMIConsumer.hmi.storeStatus();
+                HMIConsumer.hmi.setStatus(info);
                 selected = new LidarPoint(p);
             }
         }
     }
 
+    public Rectangle getBounds(LidarPoint p) {
+        Rectangle bounds = new Rectangle();
+        int diameter = viewport.relSize(0.1);
+        bounds.x = viewport.relX(p.distance * Math.cos(p.angle)) - (int) diameter/2;
+        bounds.y = viewport.relY(p.distance * Math.sin(p.angle)) - (int) diameter/2;
+        bounds.width = (int) diameter; bounds.height = (int) diameter;
+        return bounds;
+    }
+
     @Override
     public void paint(Graphics g) {
-        g.clearRect(0,0,HMI.frame.getWidth(), HMI.frame.getHeight());
+        g.clearRect(0,0, HMIConsumer.hmi.getWidth(), HMIConsumer.hmi.getHeight());
         drawGrid(g);
-        drawData(g);
+        if (points != null && !points.isEmpty())
+            drawData(g);
         drawSensor(g);
     }
 

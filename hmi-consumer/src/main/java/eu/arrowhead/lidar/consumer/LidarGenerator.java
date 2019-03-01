@@ -1,5 +1,7 @@
 package eu.arrowhead.lidar.consumer;
 
+import eu.arrowhead.lidar.common.LidarPoint;
+
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ public class LidarGenerator {
 
     public static Thread update(ArrayList<LidarPoint> data, JPanel observer) {
         return new Thread(() -> {
-            while (HMI.frame.isVisible()) {
+            while (HMIConsumer.hmi.isVisible()) {
                 for (LidarPoint p : data) {
                     p.distance += Math.random() * 0.04 - 0.02;
                     if (p.distance < 0.5)

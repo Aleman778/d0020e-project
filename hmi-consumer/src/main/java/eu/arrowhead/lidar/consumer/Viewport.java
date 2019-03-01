@@ -1,7 +1,5 @@
 package eu.arrowhead.lidar.consumer;
 
-import javax.swing.*;
-import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -13,8 +11,8 @@ public class Viewport {
     public double panSpeed = 0.01;
 
     public Viewport() {
-        x = -HMI.frame.getWidth() / 128.0;
-        y = -HMI.frame.getHeight() / 128.0;
+        x = -HMIConsumer.hmi.getWidth() / 128.0;
+        y = -HMIConsumer.hmi.getHeight() / 128.0;
         scale = 64.0;
     }
 
@@ -31,11 +29,11 @@ public class Viewport {
     }
 
     public int getWidth() {
-        return HMI.frame.getWidth();
+        return HMIConsumer.hmi.getWidth();
     }
 
     public int getHeight() {
-        return HMI.frame.getHeight();
+        return HMIConsumer.hmi.getHeight();
     }
 
     public int getScale() {
