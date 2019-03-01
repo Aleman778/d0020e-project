@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/client-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/consumer" charset="UTF-8" />
@@ -21,5 +22,6 @@
     <file url="file://$PROJECT_DIR$/core-java/serviceregistry_sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/detector-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hmi-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lidar-common" charset="UTF-8" />
   </component>
 </project>
