@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="arrowhead-authorization" />
-        <module name="arrowhead-core-common" />
         <module name="arrowhead-dnssd" />
         <module name="arrowhead-eventhandler" />
         <module name="arrowhead-gatekeeper" />
@@ -27,6 +26,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="arrowhead-common" target="1.8" />
+      <module name="arrowhead-core-common" target="1.8" />
       <module name="consumer (1)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
