@@ -29,7 +29,7 @@ public class ObjectDetectionMain {
                 lidarData = lidarData + ",\n";
             }
         }
-        lidarData = lidarData + "\t}\n}";
+        lidarData = lidarData + "\n\t}\n}";
         System.out.println(lidarData);
     }
 
