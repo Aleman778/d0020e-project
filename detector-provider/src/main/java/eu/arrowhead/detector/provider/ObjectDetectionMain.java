@@ -21,15 +21,15 @@ public class ObjectDetectionMain {
         String lidarData = "{\n\t\"LidarData\": {\n";
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).distance < ((calibration.get(i).distance) - margin)) {
-                lidarData = lidarData + "\t\t\"Datapoint " + i + "\": {\n\t\t\t\"Angle\": " + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"TRUE\"";
+                lidarData = lidarData + "\t\t\"Datapoint " + i + "\": {\n\t\t\t\"Angle\": " + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"TRUE\"\n\t\t}";
             } else {
-                lidarData = lidarData + "\t\t\"Datapoint " + i + "\": {\n\t\t\t\"Angle\": " + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"FALSE\"";
+                lidarData = lidarData + "\t\t\"Datapoint " + i + "\": {\n\t\t\t\"Angle\": " + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"FALSE\"\n\t\t}";
             }
             if((i+1) < data.size()){
                 lidarData = lidarData + ",\n";
             }
         }
-        lidarData = lidarData + "\n\t\t}\n\t}\n}";
+        lidarData = lidarData + "\n\t}\n}";
         System.out.println(lidarData);
     }
 
