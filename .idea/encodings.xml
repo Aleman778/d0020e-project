@@ -2,15 +2,14 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-java/client-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/consumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/publisher" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/client-java/subscriber" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core-java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core-java/authorization" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/core-java/common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core-java/core-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core-java/dnssd" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core-java/eventhandler" charset="UTF-8" />

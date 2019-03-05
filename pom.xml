@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>core-java</module>
-        <module>client-java</module>
+        <module>client-common</module>
         <module>hmi-consumer</module>
         <module>detector-provider</module>
         <module>lidar-common</module>
