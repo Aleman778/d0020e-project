@@ -54,7 +54,6 @@ sudo dpkg -i arrowhead-*.deb
  ```sh
 git clone --depth=1 https://github.com/arrowhead-f/core.java.git -b master
 ```
-If homebrew is not installed,
  ```sh
 brew install maven
 ```
