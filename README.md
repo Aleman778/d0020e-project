@@ -29,12 +29,12 @@ https://github.com/arrowhead-f/core-java/blob/master/documentation/Debian%20Pack
 least 6 character long!
 
 ## 2. Clone repo and go to folder
-### linux
 Installation guide for Arrowhead Framework (Java) can be found at:
 
 https://github.com/arrowhead-f/core-java/blob/master/documentation/Debian%20Packages/Debian%20Install%20-%20Cutted.pdf
 
 This process is recommended on your regular development machine,
+### Linux
  ```sh
 git clone --depth=1 https://github.com/arrowhead-f/core.java.git -b master
 ```
@@ -50,12 +50,24 @@ cd ./target
 ```sh
 sudo dpkg -i arrowhead-*.deb
 ```
-
+### MacOS
+ ```sh
+git clone --depth=1 https://github.com/arrowhead-f/core.java.git -b master
+```
+If homebrew is not installed,
+ ```sh
+brew install maven
+```
+ ```sh
+cd core-java && mvn package
+```
+ ```sh
+cd scripts && bash start_insecure_coresystems.sh
+```
 ## ... and when you have had enough - purge it from your system
  ```sh
 apt purge arrowhead-\*
 ```
-
 ## Troubleshooting
 Mvn package solution, if "apt-get install ca-certificates-java" doesn't work, run
 
