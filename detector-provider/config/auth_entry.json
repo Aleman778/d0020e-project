@@ -1,0 +1,27 @@
+{
+  "consumer": {
+    "systemName": "hmi",
+    "address": "localhost",
+    "port": 8080,
+    "authenticationInfo": "null"
+  },
+  "providerList": [
+    {
+      "systemName": "InsecureObjectDetector",
+      "address": "0.0.0.0",
+      "port": 8460
+    }
+  ],
+  "serviceList": [
+    {
+      "serviceDefinition": "ObjectDetector",
+      "interfaces": [
+        "JSON"
+      ],
+      "serviceMetadata": {
+        "detectedUnit": "boolean",
+        "angleUnit": "radians"
+      }
+    }
+  ]
+}

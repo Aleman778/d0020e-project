@@ -1,0 +1,21 @@
+{
+  "providedService": {
+    "serviceDefinition": "ObjectDetector",
+    "interfaces": [
+      "JSON"
+    ],
+    "serviceMetadata": {
+      "detectedUnit": "boolean",
+      "angleUnit": "radians"
+    }
+  },
+  "provider": {
+    "systemName": "InsecureObjectDetector",
+    "address": "0.0.0.0",
+    "port": 8460
+  },
+  "serviceUri": "objectdetect",
+  "udp": false,
+  "endOfValidity": "2020-01-01T00:00:00.000",
+  "version": 1
+}
