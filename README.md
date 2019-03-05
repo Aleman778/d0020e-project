@@ -10,10 +10,12 @@ ROS installation manual can be found at:
 https://wiki.ros.org/
 
 # LiDAR and SICK software
-SICK software can be found at:
+Setting static IP adress for the LiDAR sensor using SICK software can provide a smoother development. 
+Which can be found at:
+
 https://www.sick.com/se/sv/sopas-engineering-tool-2018/p/p367244
 
-Setting static IP for LiDAR sensor can provide a smoother developement .
+**NOTE:** It's recommended to use a network switch connecting the computers and sensor together.
 
 # Arrowhead Framework
 Installation guide for Arrowhead Framework (Java) can be found at:
@@ -57,6 +59,3 @@ update-ca-certificates -f
 Solution found at:
 https://stackoverflow.com/questions/4764611/java-security-invalidalgorithmparameterexception-the-trustanchors-parameter-mus#se
 
-Using a switch between lidar and computers can help
-
-setting static ip for Lidar using SICK software
