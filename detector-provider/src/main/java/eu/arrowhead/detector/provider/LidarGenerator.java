@@ -1,5 +1,7 @@
 package eu.arrowhead.detector.provider;
 
+import eu.arrowhead.lidar.common.LidarPoint;
+
 import java.util.ArrayList;
 
 public class LidarGenerator {

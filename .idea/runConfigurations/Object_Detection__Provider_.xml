@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Object Detection (Provider)" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="eu.arrowhead.detector.provider.ObjectDetectionMain" />
+    <module name="detector-provider" />
+    <option name="PROGRAM_PARAMETERS" value="-d" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

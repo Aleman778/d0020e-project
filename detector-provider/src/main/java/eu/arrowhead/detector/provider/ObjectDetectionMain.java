@@ -1,5 +1,7 @@
 package eu.arrowhead.detector.provider;
 
+import eu.arrowhead.lidar.common.LidarPoint;
+
 import java.util.ArrayList;
 
 public class ObjectDetectionMain {
@@ -33,7 +35,7 @@ public class ObjectDetectionMain {
         System.out.println(lidarData);
     }
 
-    public static void main(String args) {
+    public static void main(String[] args) {
         setup();
         while(true) {
             detection(LidarGenerator.generate(numPoints));
