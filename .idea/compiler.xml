@@ -14,8 +14,17 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="arrowhead-authorization" target="1.8" />
       <module name="arrowhead-common" target="1.8" />
       <module name="arrowhead-core-common" target="1.8" />
+      <module name="arrowhead-dnssd" target="1.8" />
+      <module name="arrowhead-eventhandler" target="1.8" />
+      <module name="arrowhead-gatekeeper" target="1.8" />
+      <module name="arrowhead-gateway" target="1.8" />
+      <module name="arrowhead-orchestrator" target="1.8" />
+      <module name="arrowhead-qos" target="1.8" />
+      <module name="arrowhead-serviceregistry" target="1.8" />
+      <module name="arrowhead-serviceregistry-sql" target="1.8" />
       <module name="arrowheadclient" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="consumer (1)" target="1.8" />
