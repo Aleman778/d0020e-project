@@ -75,7 +75,7 @@
                         </manifestEntries>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>eu.arrowhead.client.provider.FullProviderMain</mainClass>
+                            <mainClass>eu.arrowhead.lidar.provider.LidarGenProvider</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>

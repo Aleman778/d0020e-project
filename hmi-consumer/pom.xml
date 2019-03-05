@@ -64,7 +64,7 @@
                         </manifestEntries>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>eu.arrowhead.lidar.HMI</mainClass>
+                            <mainClass>eu.arrowhead.lidar.consumer.HMIConsumer</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
