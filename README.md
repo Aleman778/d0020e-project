@@ -78,3 +78,13 @@ Solution found at:
 
 https://stackoverflow.com/questions/4764611/java-security-invalidalgorithmparameterexception-the-trustanchors-parameter-mus#se
 
+The command for installing java JRE 11 might install JRE 10 instead. 
+If it does that do this to get the correct version:
+ ```sh
+sudo add-apt-repository ppa:openjdk-r/ppa \
+&& sudo apt-get update -q \
+&& sudo apt install -y openjdk-11-jdk
+```
+Solution found at:
+
+https://stackoverflow.com/questions/52504825/how-to-install-jdk-11-under-ubuntu
