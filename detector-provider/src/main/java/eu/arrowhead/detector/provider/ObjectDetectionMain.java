@@ -1,5 +1,6 @@
 package eu.arrowhead.detector.provider;
 
+import eu.arrowhead.lidar.common.DetectionReadout;
 import eu.arrowhead.lidar.common.LidarPoint;
 import java.util.ArrayList;
 import eu.arrowhead.common.api.ArrowheadApplication;
@@ -18,7 +19,6 @@ public class ObjectDetectionMain extends ArrowheadApplication {
     private static double margin = 1.0;
     private static ArrayList<LidarPoint> calibration = LidarGenerator.generate(numPoints);
     private ArrayList<LidarPoint> data;
-
 
     public ObjectDetectionMain(String[] args) throws ArrowheadException {
         super(args);
@@ -50,20 +50,13 @@ public class ObjectDetectionMain extends ArrowheadApplication {
 
 
     //Checks if a datapoint in a LidarPoint list is less than the calibrated value for that datapoint
-    void detection() {
-        String lidarData = "{\n\t\"LidarData\": {\n";
+    boolean detection() {
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).distance < ((calibration.get(i).distance) - margin)) {
-                lidarData = lidarData + "\t\t\"Datapoint " + (i+1) + "\": {\n\t\t\t\"Angle\": \"" + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"TRUE\"\n\t\t}";
-            } else {
-                lidarData = lidarData + "\t\t\"Datapoint " + (i+1) + "\": {\n\t\t\t\"Angle\": \"" + data.get(i).angle + "\"\n\t\t\t\"Detected\": \"FALSE\"\n\t\t}";
-            }
-            if((i+1) < data.size()){
-                lidarData = lidarData + ",\n";
+                return(true);
             }
         }
-        lidarData = lidarData + "\n\t}\n}";
-        System.out.println(lidarData);
+        return(false);
     }
 
     public static void main(String[] args) throws ArrowheadException{

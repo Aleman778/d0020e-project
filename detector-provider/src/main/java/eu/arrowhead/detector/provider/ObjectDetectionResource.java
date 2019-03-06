@@ -1,5 +1,7 @@
 package eu.arrowhead.detector.provider;
 
+import eu.arrowhead.lidar.common.DetectionReadout;
+
 @Path("objectdetect")
 @Produces(MediaType.APPLICATION_JSON)
 
@@ -11,7 +13,7 @@ public class ObjectDetectionResource extends ArrowheadResource {
 
     @GET
     public Response get() {
-        ObjectDetectionMain readout = new ObjectDetectionMain().detection();
+        DetectionReadout readout = new DetectionReadout(new ObjectDetectionMain().detection());
         return Response.status(200).entity(readout).build();
     }
 }
