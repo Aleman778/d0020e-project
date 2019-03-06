@@ -14,19 +14,18 @@ import eu.arrowhead.common.model.ServiceRegistryEntry;
 
 public class ObjectDetectionMain extends ArrowheadApplication {
 
-    private static int numPoints;
-    private static double margin;
-    private static ArrayList<LidarPoint> calibration;
+    private static int numPoints = 10;
+    private static double margin = 1.0;
+    private static ArrayList<LidarPoint> calibration = LidarGenerator.generate(numPoints);
+    private ArrayList<LidarPoint> data;
+
 
     public ObjectDetectionMain(String[] args) throws ArrowheadException {
         super(args);
     }
 
-    //Setup for variables.
-    private static void setup() {
-        numPoints = 10;
-        margin = 1.0;
-        calibration = LidarGenerator.generate(numPoints);
+    public ObjectDetectionMain(){
+        this.data = LidarGenerator.generate(numPoints);
     }
 
     protected void onStart() throws ArrowheadException {
@@ -37,7 +36,7 @@ public class ObjectDetectionMain extends ArrowheadApplication {
         final ArrowheadSecurityContext securityContext = ArrowheadSecurityContext.createFromProperties(true);
         final ArrowheadHttpServer server = ArrowheadGrizzlyHttpServer
                 .createFromProperties(securityContext)
-                .addResources(LidarGenerator.class, LidarPoint.class)
+                .addResources(ObjectDetectionResource.class)
                 .addPackages("eu.arrowhead.demo", "eu.arrowhead.demo.provider.filter")
                 .start();
 
@@ -51,7 +50,7 @@ public class ObjectDetectionMain extends ArrowheadApplication {
 
 
     //Checks if a datapoint in a LidarPoint list is less than the calibrated value for that datapoint
-    private static void detection(ArrayList<LidarPoint> data) {
+    void detection() {
         String lidarData = "{\n\t\"LidarData\": {\n";
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).distance < ((calibration.get(i).distance) - margin)) {
@@ -67,8 +66,7 @@ public class ObjectDetectionMain extends ArrowheadApplication {
         System.out.println(lidarData);
     }
 
-    public static void main(String[] args) {
-        setup();
+    public static void main(String[] args) throws ArrowheadException{
         new ObjectDetectionMain(args).start();
     }
 
