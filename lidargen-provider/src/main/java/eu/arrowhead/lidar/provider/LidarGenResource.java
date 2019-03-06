@@ -1,37 +1,32 @@
 package eu.arrowhead.lidar.provider;
 
-import eu.arrowhead.client.common.model.MeasurementEntry;
-import eu.arrowhead.client.common.model.TemperatureReadout;
+import eu.arrowhead.common.api.server.ArrowheadHttpServer;
+import eu.arrowhead.common.api.server.ArrowheadResource;
+import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.lidar.common.LidarPoint;
 import eu.arrowhead.lidar.common.LidarReadout;
 
-import javax.swing.*;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
-@Path("/")
+@Path("lidargen")
 @Produces(MediaType.APPLICATION_JSON)
-public class LidarGenResource {
-
-    static final String SERVICE_URI = "lidargen";
+public class LidarGenResource extends ArrowheadResource {
 
     static final ArrayList<LidarPoint> data = generate(40);
 
-    @GET
-    @Path(SERVICE_URI)
-    public Response getIt() {
-        if (LidarGenProvider.customResponsePayload != null) {
-            return Response.status(200).entity(LidarGenProvider.customResponsePayload).build();
-        } else {
-            update();
-            LidarReadout readout = new LidarReadout("Faker_LidarGenerator");
-            readout.data = data;
-            return Response.status(200).entity(readout).build();
-        }
+    public LidarGenResource(ArrowheadHttpServer server) throws ArrowheadException {
+        super(server);
+    }
+
+    public Response get() {
+        update();
+        LidarReadout readout = new LidarReadout("Faker_LidarGenerator");
+        readout.data = data;
+        return Response.status(200).entity(readout).build();
     }
 
     public static ArrayList<LidarPoint> generate(int numPoints){

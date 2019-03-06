@@ -40,7 +40,6 @@ public class HMIWindow extends JFrame {
         JButton buttonRetry = new JButton("Try again");
         buttonRetry.addActionListener((ActionEvent e) -> {
             setStatus("Retrying...");
-            HMIConsumer.findService();
         });
         statusPanel.add(buttonRetry);
 
