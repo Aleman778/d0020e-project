@@ -97,4 +97,10 @@ public class LidarReadout {
     public boolean remove(LidarPoint point) {
         return data.remove(point);
     }
+
+    @Override
+    public String toString() {
+        return "Lidar readout[name=" + name + ", time=" + time + ", unitAngle=" + unitAngle +
+                ", unitDist=" + unitDist + "] has " + data.size() + " lidar points.";
+    }
 }

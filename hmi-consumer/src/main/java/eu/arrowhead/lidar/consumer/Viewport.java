@@ -11,8 +11,8 @@ public class Viewport {
     public double panSpeed = 0.01;
 
     public Viewport() {
-        x = -HMIConsumer.hmi.getWidth() / 128.0;
-        y = -HMIConsumer.hmi.getHeight() / 128.0;
+        x = -HMIConsumer.window.getWidth() / 128.0;
+        y = -HMIConsumer.window.getHeight() / 128.0;
         scale = 64.0;
     }
 
@@ -29,11 +29,11 @@ public class Viewport {
     }
 
     public int getWidth() {
-        return HMIConsumer.hmi.getWidth();
+        return HMIConsumer.window.getWidth();
     }
 
     public int getHeight() {
-        return HMIConsumer.hmi.getHeight();
+        return HMIConsumer.window.getHeight();
     }
 
     public int getScale() {

@@ -26,12 +26,12 @@ public class LidarView extends JPanel {
 
     public void selectPoint(int x, int y) {
         selected = null;
-        HMIConsumer.hmi.restoreStatus();
+        HMIConsumer.window.restoreStatus();
         for (LidarPoint p : points) {
             if (getBounds().contains(x, y)) {
                 String info = "Selected data point - distance: " + p.distance + " meters, angle: " + Math.toDegrees(p.angle) + " degrees";
-                HMIConsumer.hmi.storeStatus();
-                HMIConsumer.hmi.setStatus(info);
+                HMIConsumer.window.storeStatus();
+                HMIConsumer.window.setStatus(info);
                 selected = new LidarPoint(p);
             }
         }
@@ -48,7 +48,7 @@ public class LidarView extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.clearRect(0,0, HMIConsumer.hmi.getWidth(), HMIConsumer.hmi.getHeight());
+        g.clearRect(0,0, HMIConsumer.window.getWidth(), HMIConsumer.window.getHeight());
         drawGrid(g);
         if (points != null && !points.isEmpty())
             drawData(g);
