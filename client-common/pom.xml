@@ -1,114 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~  Copyright (c) 2018 AITIA International Inc.
-  ~
-  ~  This work is part of the Productive 4.0 innovation project, which receives grants from the
-  ~  European Commissions H2020 research and innovation programme, ECSEL Joint Undertaking
-  ~  (project no. 737459), the free state of Saxony, the German Federal Ministry of Education and
-  ~  national funding authorities from involved countries.
-  -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>d0020e-project</artifactId>
     <groupId>eu.arrowhead</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>client-common</artifactId>
-
+  <artifactId>arrowhead-client-common</artifactId>
+  <packaging>jar</packaging>
 
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.version>3.8.0</maven.compiler.version>
-    <maven.dependency.version>2.5.1</maven.dependency.version>
-    <maven.jar.version>3.0.2</maven.jar.version>
-    <maven.resources.version>2.7</maven.resources.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.dependency.version>3.1.1</maven.dependency.version>
   </properties>
 
   <dependencies>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.jaxrs</groupId>
-      <artifactId>jackson-jaxrs-json-provider</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-    </dependency>
-
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15on</artifactId>
     </dependency>
-
     <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+    </dependency>
+    <dependency>
+      <!-- Grizzly 2 Http Container. -->
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-grizzly2-http</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.glassfish.jersey.inject</groupId>
-      <artifactId>jersey-hk2</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.sun.istack</groupId>
-      <artifactId>istack-commons-runtime</artifactId>
-    </dependency>
-
-    <dependency>
+      <!-- JAXB API -->
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
+      <!-- Functionality to handle JSON input/output for JAX-RS implementations (like Jersey and RESTeasy) using
+           standard Jackson data binding. -->
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-hikaricp</artifactId>
+      <!-- Add-on module to support JSR-310 (Java 8 Date & Time API) data types. -->
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-java8</artifactId>
+      <!-- HK2 InjectionManager implementation. -->
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
     </dependency>
-
+    <dependency>
+      <!-- Log4j Core -->
+      <!-- TODO This is very old, should probably be replaced -->
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <!-- The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar
+           contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.5 to JDK
+           1.8. -->
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+    </dependency>
+    <dependency>
+      <!-- JDBC Type 4 driver for MySQL. -->
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
   </dependencies>
-
 </project>
