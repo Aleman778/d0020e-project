@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ObjectDetectionMain {
 
-    private static int numPoints = 10;
+    private static int numPoints = 40;
     private static int hej = 1;
     private static double margin = 1.0;
     private static ArrayList<LidarPoint> calibration = LidarGenerator.generate(numPoints);
