@@ -16,8 +16,10 @@ import eu.arrowhead.common.model.ServiceRegistryEntry;
 public class ObjectDetectionMain extends ArrowheadApplication {
 
     private static int numPoints = 10;
+    private static int hej = 1;
     private static double margin = 1.0;
     private static ArrayList<LidarPoint> calibration = LidarGenerator.generate(numPoints);
+    private int id;
     private ArrayList<LidarPoint> data;
 
     public ObjectDetectionMain(String[] args) throws ArrowheadException {
@@ -26,6 +28,8 @@ public class ObjectDetectionMain extends ArrowheadApplication {
 
     public ObjectDetectionMain(){
         this.data = LidarGenerator.generate(numPoints);
+        this.id = hej;
+        hej++;
     }
 
     protected void onStart() throws ArrowheadException {
@@ -57,6 +61,10 @@ public class ObjectDetectionMain extends ArrowheadApplication {
             }
         }
         return(false);
+    }
+
+    int getId(){
+        return id;
     }
 
     public static void main(String[] args) throws ArrowheadException{

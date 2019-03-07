@@ -13,7 +13,9 @@ public class ObjectDetectionResource extends ArrowheadResource {
 
     @GET
     public Response get() {
-        DetectionReadout readout = new DetectionReadout(new ObjectDetectionMain().detection());
+
+        ObjectDetectionMain object = new ObjectDetectionMain();
+        DetectionReadout readout = new DetectionReadout(object.detection(),object.getId());
         return Response.status(200).entity(readout).build();
     }
 }
