@@ -9,9 +9,9 @@ import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.common.misc.ArrowheadProperties;
 import eu.arrowhead.common.model.ServiceRegistryEntry;
 
-public class ObjectDetectProvider extends ArrowheadApplication{
+public class ObjectDetectionProvider extends ArrowheadApplication{
 
-    public ObjectDetectProvider(String[] args) throws ArrowheadException {
+    public ObjectDetectionProvider(String[] args) throws ArrowheadException {
         super(args);
     }
 
@@ -33,6 +33,6 @@ public class ObjectDetectProvider extends ArrowheadApplication{
     }
 
     public static void main(String[] args) throws ArrowheadException{
-        new ObjectDetectProvider(args).start();
+        new ObjectDetectionProvider(args).start();
     }
 }

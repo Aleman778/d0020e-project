@@ -24,10 +24,10 @@ public class ObjectDetectionMain {
     boolean detection() {
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).distance < ((calibration.get(i).distance) - margin)) {
-                return(true);
+                return true;
             }
         }
-        return(false);
+        return false;
     }
 
     int getId(){

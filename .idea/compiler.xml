@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="client-common" />
+        <module name="detector-consumer" />
         <module name="detector-provider" />
         <module name="hmi-consumer" />
         <module name="lidar-common" />

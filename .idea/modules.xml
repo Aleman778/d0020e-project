@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/core-java/common/arrowhead-common.iml" filepath="$PROJECT_DIR$/core-java/common/arrowhead-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/detector-consumer/detector-consumer.iml" filepath="$PROJECT_DIR$/detector-consumer/detector-consumer.iml" />
     </modules>
   </component>
 </project>
