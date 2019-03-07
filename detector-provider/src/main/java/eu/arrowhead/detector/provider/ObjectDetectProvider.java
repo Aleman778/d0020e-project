@@ -9,7 +9,7 @@ import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.common.misc.ArrowheadProperties;
 import eu.arrowhead.common.model.ServiceRegistryEntry;
 
-public class ObjectDetectProvider {
+public class ObjectDetectProvider extends ArrowheadApplication{
 
     public ObjectDetectProvider(String[] args) throws ArrowheadException {
         super(args);
@@ -17,9 +17,6 @@ public class ObjectDetectProvider {
 
     protected void onStart() throws ArrowheadException {
         final ArrowheadProperties props = getProps();
-        if (props.getBooleanProperty("payload_from_file", false)) {
-            customResponsePayload = props.getProperty("custom_payload");
-        }
         final ArrowheadSecurityContext securityContext = ArrowheadSecurityContext.createFromProperties(true);
         final ArrowheadHttpServer server = ArrowheadGrizzlyHttpServer
                 .createFromProperties(securityContext)

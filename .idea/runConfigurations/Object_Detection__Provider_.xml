@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Object Detection (Provider)" type="Application" factoryName="Application">
-    <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+    <option name="ALTERNATIVE_JRE_PATH" value="11" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <option name="MAIN_CLASS_NAME" value="eu.arrowhead.detector.provider.ObjectDetectionMain" />
+    <option name="MAIN_CLASS_NAME" value="eu.arrowhead.detector.provider.ObjectDetectProvider" />
     <module name="detector-provider" />
     <option name="PROGRAM_PARAMETERS" value="-d" />
     <method v="2">
