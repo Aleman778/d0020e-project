@@ -12,18 +12,9 @@ hmi-consumer/.idea/*
 lidar-common/.idea/*
 lidargen-provider/.idea/*
 
-detector-consumer/pom.xml
-detector-provider/pom.xml
-hmi-consumer/pom.xml
-lidar-common/pom.xml
-lidargen-provider/pom.xml
-
-
 client-common/client-common.iml
 detector-consumer/detector-consumer.iml
 detector-provider/detector-provider.iml
 hmi-consumer/him-consumer.iml
 lidar-common/lidar-common.iml
 lidargen-provider/lidargen-provider.iml
-
-pom.xml
