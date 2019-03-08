@@ -30,8 +30,13 @@ public class ArrowheadTokenSignatureSecurityFilter extends ArrowheadSecurityFilt
   private final PublicKey publicAuthKey;
 
   public ArrowheadTokenSignatureSecurityFilter(ArrowheadSecurityContext securityContext) {
-    this.privateKey = securityContext.getPrivateKey();
-    this.publicAuthKey = securityContext.getPublicAuthKey();
+    if (securityContext != null) {
+      this.privateKey = securityContext.getPrivateKey();
+      this.publicAuthKey = securityContext.getPublicAuthKey();
+    } else  {
+      this.privateKey = null;
+      this.publicAuthKey = null;
+    }
   }
 
   @Override

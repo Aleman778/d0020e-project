@@ -12,6 +12,7 @@
         <module name="hmi-consumer" />
         <module name="lidar-common" />
         <module name="lidargen-provider" />
+        <module name="objectdetection-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

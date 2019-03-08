@@ -17,7 +17,7 @@ public class LidarGenProvider extends ArrowheadApplication {
     @Override
     protected void onStart() throws ArrowheadException {
         final ArrowheadSecurityContext securityContext = ArrowheadSecurityContext
-                .createFromProperties();
+                .createFromProperties(true);
         final ArrowheadHttpServer server = ArrowheadGrizzlyHttpServer
                 .createFromProperties(securityContext)
                 .addResources(LidarGenResource.class)

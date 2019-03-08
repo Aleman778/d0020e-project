@@ -39,7 +39,7 @@ public class HMIConsumer extends ArrowheadApplication {
 
         final ArrowheadSystem me = ArrowheadSystem.createFromProperties();
         final ServiceRequestForm srf = new ServiceRequestForm.Builder(me)
-                .requestedService("temperature", "json", getProps().isSecure())
+                .requestedService("lidargen", "json", getProps().isSecure())
                 .metadata(ServiceMetadata.Keys.UNIT, "meters")
                 .flag(OrchestrationFlags.Flags.OVERRIDE_STORE, true)
                 .flag(OrchestrationFlags.Flags.PING_PROVIDERS, false)
@@ -63,7 +63,7 @@ public class HMIConsumer extends ArrowheadApplication {
                 System.out.println(readout);
             }
         };
-        timer.schedule(authTask, 2L * 1000L, 8L * 1000L);
+        timer.schedule(authTask, 2L * 1000L, 2L * 1000L);
     }
 
     @Override
