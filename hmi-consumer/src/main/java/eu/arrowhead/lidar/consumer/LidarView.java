@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 public class LidarView extends JPanel {
 
+    private HMITheme theme;
     private Viewport viewport;
-    private Thread provider;
     private LidarPoint selected;
     private ArrayList<LidarPoint> points;
 
     public LidarView() {
         setName("LidarView");
 
+        theme = HMIThemeManager.getTheme();
         viewport = new Viewport();
         MouseAdapter adapter = viewport.mouseAdapter(this);
         addMouseListener(adapter);
@@ -33,9 +34,8 @@ public class LidarView extends JPanel {
         selected = null;
         HMIConsumer.window.restoreStatus();
         for (LidarPoint p : points) {
-            if (getBounds().contains(x, y)) {
+            if (getBounds(p).contains(x, y)) {
                 String info = "Selected data point - distance: " + p.distance + " meters, angle: " + Math.toDegrees(p.angle) + " degrees";
-                HMIConsumer.window.storeStatus();
                 HMIConsumer.window.setStatus(info);
                 selected = new LidarPoint(p);
             }
@@ -53,7 +53,8 @@ public class LidarView extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.clearRect(0,0, HMIConsumer.window.getWidth(), HMIConsumer.window.getHeight());
+        g.setColor(theme.bgColor);
+        g.fillRect(0,0, getWidth(), getHeight());
         drawGrid(g);
         if (points != null && !points.isEmpty())
             drawData(g);
@@ -61,7 +62,7 @@ public class LidarView extends JPanel {
     }
 
     private void drawGrid(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(theme.gridColor);
         int s = viewport.getScale();
         int w = viewport.getWidth() / s;
         int h = viewport.getHeight() / s;
@@ -74,7 +75,7 @@ public class LidarView extends JPanel {
 
     private void drawSensor(Graphics g) {
         int d = viewport.relSize(0.5);
-        g.setColor(Color.BLUE);
+        g.setColor(theme.sensorColor);
         g.fillOval(viewport.relX(0) - d/2, viewport.relY(0) - d/2, d, d);
     }
 
@@ -84,9 +85,9 @@ public class LidarView extends JPanel {
         int prevX = viewport.relX(last.distance * Math.cos(last.angle));
         int prevY = viewport.relY(last.distance * Math.sin(last.angle));
 
-        g.setColor(Color.RED);
+        g.setColor(theme.dataColor);
         if (selected != null) {
-            g.setColor(new Color(1.0f, 0.0f, 0.0f, 0.1f));
+            g.setColor(new Color(theme.dataColor.getRed(), theme.dataColor.getGreen(), theme.dataColor.getBlue(), 80));
         }
         for (LidarPoint p : points) {
             int x = viewport.relX(p.distance * Math.cos(p.angle));
@@ -101,7 +102,7 @@ public class LidarView extends JPanel {
         }
 
         if (selected != null) {
-            g.setColor(Color.RED);
+            g.setColor(theme.dataColor);
             int x = viewport.relX(selected.distance * Math.cos(selected.angle));
             int y = viewport.relY(selected.distance * Math.sin(selected.angle));
             int d = viewport.relSize(0.1);

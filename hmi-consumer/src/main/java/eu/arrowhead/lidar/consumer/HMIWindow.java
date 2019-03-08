@@ -26,6 +26,9 @@ public class HMIWindow extends JFrame {
         setSize(640, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        HMIThemeManager.setTheme("dark");
+        HMITheme theme = HMIThemeManager.getTheme();
+
         root = new JRootPane();
         root.setLayout(new BorderLayout());
         setRootPane(root);
@@ -34,21 +37,13 @@ public class HMIWindow extends JFrame {
         statusPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         statusLabel = new JLabel("Ready");
         statusPanel.add(statusLabel);
+        statusPanel.setBackground(theme.bgPrimaryColor);
+        statusLabel.setForeground(theme.fgPrimaryColor);
         root.add(statusPanel, BorderLayout.SOUTH);
         statusMessage = "Ready";
 
         view = new LidarView();
         root.add(view, BorderLayout.CENTER);
-
-        JButton buttonRetry = new JButton("Try again");
-        buttonRetry.addActionListener((ActionEvent e) -> {
-            setStatus("Retrying...");
-        });
-        statusPanel.add(buttonRetry);
-
-
-        //HMIConsumer.findService();
-
     }
 
     public void callback(ArrayList<LidarPoint> data) {

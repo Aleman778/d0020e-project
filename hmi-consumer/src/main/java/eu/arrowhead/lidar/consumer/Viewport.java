@@ -8,7 +8,7 @@ public class Viewport {
 
     public double x, y;
     public double scale;
-    public double panSpeed = 0.01;
+    public double panSpeed = 0.005;
 
     public Viewport() {
         x = -HMIConsumer.window.getWidth() / 128.0;
@@ -60,8 +60,8 @@ public class Viewport {
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                x -= panSpeed * (e.getX() - prevX);
-                y -= panSpeed * (e.getY() - prevY);
+                x -= (e.getX() - prevX) / scale;
+                y -= (e.getY() - prevY) / scale;
                 prevX = e.getX();
                 prevY = e.getY();
                 observer.repaint();
@@ -72,10 +72,10 @@ public class Viewport {
                 double prevScale = scale;
 
                 scale -= e.getWheelRotation() * e.getScrollAmount() * Math.exp(scale/500.0);
-                if (scale < 8)
-                    scale = 8;
-                if (scale > 200)
-                    scale = 200;
+                if (scale < 16)
+                    scale = 16;
+                if (scale > 100)
+                    scale = 100;
 
                 double dx = getWidth() - scale * (double) getWidth() / prevScale;
                 double dy = getHeight() - scale * (double) getHeight() / prevScale;
