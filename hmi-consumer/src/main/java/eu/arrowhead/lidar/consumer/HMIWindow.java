@@ -1,8 +1,11 @@
 package eu.arrowhead.lidar.consumer;
 
+import eu.arrowhead.lidar.common.LidarPoint;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class HMIWindow extends JFrame {
 
@@ -46,6 +49,10 @@ public class HMIWindow extends JFrame {
 
         //HMIConsumer.findService();
 
+    }
+
+    public void callback(ArrayList<LidarPoint> data) {
+        view.updatePoints(data);
     }
 
     /**

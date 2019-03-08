@@ -8,11 +8,6 @@ package eu.arrowhead.lidar.common;
 public class LidarPoint {
 
     /**
-     * The name of the lidar point.
-     */
-    public String name;
-
-    /**
      * The distance measured in meters.
      */
     public double distance;
@@ -21,6 +16,13 @@ public class LidarPoint {
      * The angle in radians.
      */
     public double angle;
+
+    /**
+     * Default constructor.
+     */
+    public LidarPoint() {
+
+    }
 
     /**
      * Constructor.

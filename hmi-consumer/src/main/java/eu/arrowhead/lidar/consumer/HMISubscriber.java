@@ -16,6 +16,9 @@ public class HMISubscriber extends ArrowheadApplication {
 
     private HMISubscriber(String[] args) throws ArrowheadException {
         super(args);
+
+        HMIConsumer.window = new HMIWindow();
+        HMIConsumer.window.setVisible(true);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class LidarReadout {
     /**
      * The list of LiDAR points.
      */
-    public List<LidarPoint> data;
+    public ArrayList<LidarPoint> data;
 
     /**
      * Constructor.
@@ -73,7 +73,7 @@ public class LidarReadout {
      * @param unitDist the unit of the distance
      * @param data list of lidar data
      */
-    public LidarReadout(String name, double time, String unitAngle, String unitDist, List<LidarPoint> data) {
+    public LidarReadout(String name, double time, String unitAngle, String unitDist, ArrayList<LidarPoint> data) {
         this.name = name;
         this.time = time;
         this.unitAngle = unitAngle;

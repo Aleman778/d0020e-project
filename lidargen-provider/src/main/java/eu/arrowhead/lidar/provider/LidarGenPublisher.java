@@ -56,7 +56,7 @@ public class LidarGenPublisher extends ArrowheadApplication {
                 LidarGenerator.update(data);
             }
         };
-        timer.schedule(authTask, 2L * 1000L, 8L * 1000L);
+        timer.schedule(authTask, 2L * 1000L, 100L);
     }
 
     @Override

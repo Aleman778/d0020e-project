@@ -31,7 +31,6 @@ public class LidarGenPublisherResource extends ArrowheadResource {
     @POST
     @Path("feedback")
     public Response receiveEvent(Map<String, Boolean> results) {
-        log.info("Event publishing results: " + results.toString());
         return Response.ok().build();
     }
 

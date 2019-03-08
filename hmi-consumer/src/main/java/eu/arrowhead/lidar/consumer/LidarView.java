@@ -24,6 +24,11 @@ public class LidarView extends JPanel {
         addMouseWheelListener(adapter);
     }
 
+    public void updatePoints(ArrayList<LidarPoint> points) {
+        this.points = points;
+        repaint();
+    }
+
     public void selectPoint(int x, int y) {
         selected = null;
         HMIConsumer.window.restoreStatus();
