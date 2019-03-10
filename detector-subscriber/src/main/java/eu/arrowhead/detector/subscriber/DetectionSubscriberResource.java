@@ -13,7 +13,8 @@ import eu.arrowhead.common.api.server.ArrowheadHttpServer;
 import eu.arrowhead.common.api.server.ArrowheadResource;
 import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.common.model.Event;
-
+import eu.arrowhead.common.api.ArrowheadConverter;
+import eu.arrowhead.lidar.common.DetectionReadout;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,7 +35,8 @@ public class DetectionSubscriberResource extends ArrowheadResource {
     @POST
     @Path("notify")
     public Response receiveEvent(Event event) {
-        log.info("Received new event: " + event.toString());
+        DetectionReadout readout = ArrowheadConverter.json().fromString(event.getPayload(), DetectionReadout.class);
+        System.out.println("Id: " + readout.getId() + ", isDetected: " + readout.getDetected() + ", time: " + readout.getTime());
         return Response.ok().build();
     }
 }
