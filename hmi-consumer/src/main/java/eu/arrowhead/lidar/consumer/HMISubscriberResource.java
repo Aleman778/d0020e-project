@@ -1,4 +1,4 @@
-package eu.arrowhead.lidar.subscriber;
+package eu.arrowhead.lidar.consumer;
 
 import eu.arrowhead.common.api.ArrowheadConverter;
 import eu.arrowhead.common.api.server.ArrowheadHttpServer;
@@ -29,6 +29,7 @@ public class HMISubscriberResource extends ArrowheadResource {
     @Path("notify")
     public Response receiveEvent(Event event) {
         LidarReadout readout = ArrowheadConverter.json().fromString(event.getPayload(), LidarReadout.class);
+        HMIConsumer.window.callback(readout.data);
         return Response.ok().build();
     }
 }

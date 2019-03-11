@@ -1,4 +1,4 @@
-package eu.arrowhead.lidar.common.hmi;
+package eu.arrowhead.lidar.consumer;
 
 import java.awt.*;
 
