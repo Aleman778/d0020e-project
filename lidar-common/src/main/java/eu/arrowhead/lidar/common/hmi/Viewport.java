@@ -1,4 +1,4 @@
-package eu.arrowhead.lidar.consumer;
+package eu.arrowhead.lidar.common.hmi;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,8 +11,8 @@ public class Viewport {
     public double panSpeed = 0.005;
 
     public Viewport() {
-        x = -HMIConsumer.window.getWidth() / 128.0;
-        y = -HMIConsumer.window.getHeight() / 128.0;
+        x = -HMIApplication.window.getWidth() / 128.0;
+        y = -HMIApplication.window.getHeight() / 128.0;
         scale = 64.0;
     }
 
@@ -29,11 +29,11 @@ public class Viewport {
     }
 
     public int getWidth() {
-        return HMIConsumer.window.getWidth();
+        return HMIApplication.window.getWidth();
     }
 
     public int getHeight() {
-        return HMIConsumer.window.getHeight();
+        return HMIApplication.window.getHeight();
     }
 
     public int getScale() {

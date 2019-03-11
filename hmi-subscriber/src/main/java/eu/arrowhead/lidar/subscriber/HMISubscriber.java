@@ -1,14 +1,14 @@
-package eu.arrowhead.lidar.consumer;
+package eu.arrowhead.lidar.subscriber;
 
-import eu.arrowhead.common.api.ArrowheadApplication;
 import eu.arrowhead.common.api.ArrowheadSecurityContext;
 import eu.arrowhead.common.api.clients.core.EventHandlerClient;
 import eu.arrowhead.common.api.server.ArrowheadGrizzlyHttpServer;
 import eu.arrowhead.common.api.server.ArrowheadHttpServer;
 import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.common.model.ArrowheadSystem;
+import eu.arrowhead.lidar.common.hmi.HMIApplication;
 
-public class HMISubscriber extends ArrowheadApplication {
+public class HMISubscriber extends HMIApplication {
 
     public static void main(String[] args) throws ArrowheadException {
         new HMISubscriber(args).start();
@@ -16,9 +16,6 @@ public class HMISubscriber extends ArrowheadApplication {
 
     private HMISubscriber(String[] args) throws ArrowheadException {
         super(args);
-
-        HMIConsumer.window = new HMIWindow();
-        HMIConsumer.window.setVisible(true);
     }
 
     @Override

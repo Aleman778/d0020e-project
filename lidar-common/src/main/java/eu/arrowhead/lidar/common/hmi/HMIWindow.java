@@ -1,10 +1,9 @@
-package eu.arrowhead.lidar.consumer;
+package eu.arrowhead.lidar.common.hmi;
 
 import eu.arrowhead.lidar.common.LidarPoint;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 public class HMIWindow extends JFrame {
@@ -26,7 +25,6 @@ public class HMIWindow extends JFrame {
         setSize(640, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        HMIThemeManager.setTheme("dark");
         HMITheme theme = HMIThemeManager.getTheme();
 
         root = new JRootPane();
