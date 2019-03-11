@@ -12,6 +12,9 @@ import eu.arrowhead.common.model.OrchestrationFlags;
 import eu.arrowhead.common.model.ServiceMetadata;
 import eu.arrowhead.common.model.ServiceRequestForm;
 import eu.arrowhead.lidar.common.LidarReadout;
+import eu.arrowhead.lidar.common.hmi.HMIApplication;
+import eu.arrowhead.lidar.common.hmi.HMIWindow;
+import eu.arrowhead.lidar.common.hmi.LidarView;
 
 import javax.ws.rs.core.Response;
 import java.util.Timer;
@@ -21,15 +24,14 @@ import java.util.TimerTask;
  * The HMIConsumer class sets up an Arrowhead Consumer to
  * consume LiDAR data and presents on the {@link LidarView} panel.
  */
-public class HMIConsumer extends ArrowheadApplication {
+public class HMIConsumer extends HMIApplication {
 
-    public static HMIWindow window;
+    public static void main(String[] args) throws ArrowheadException {
+        new HMIConsumer(args).start();
+    }
 
-    public HMIConsumer(String[] args) throws ArrowheadException {
+    private HMIConsumer(String[] args) throws ArrowheadException {
         super(args);
-
-        window = new HMIWindow();
-        window.setVisible(true);
     }
 
     @Override
@@ -39,11 +41,11 @@ public class HMIConsumer extends ArrowheadApplication {
 
         final ArrowheadSystem me = ArrowheadSystem.createFromProperties();
         final ServiceRequestForm srf = new ServiceRequestForm.Builder(me)
-                .requestedService("lidargen", "json", getProps().isSecure())
+                .requestedService("lidargen", "JSON", getProps().isSecure())
                 .metadata(ServiceMetadata.Keys.UNIT, "meters")
                 .flag(OrchestrationFlags.Flags.OVERRIDE_STORE, true)
                 .flag(OrchestrationFlags.Flags.PING_PROVIDERS, false)
-                .flag(OrchestrationFlags.Flags.METADATA_SEARCH, true)
+                .flag(OrchestrationFlags.Flags.METADATA_SEARCH, false)
                 .flag(OrchestrationFlags.Flags.ENABLE_INTER_CLOUD, true)
                 .build();
         log.info("Service Request payload: " + ArrowheadConverter.json().toString(srf));
@@ -69,9 +71,5 @@ public class HMIConsumer extends ArrowheadApplication {
     @Override
     protected void onStop() {
 
-    }
-
-    public static void main(String[] args) throws ArrowheadException {
-        new HMIConsumer(args).start();
     }
 }

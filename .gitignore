@@ -15,6 +15,9 @@ lidargen-provider/.idea/*
 client-common/client-common.iml
 detector-consumer/detector-consumer.iml
 detector-provider/detector-provider.iml
-hmi-consumer/him-consumer.iml
+hmi-consumer/hmi-consumer.iml
+hmi-subscriber/hmi-subscriber.iml
 lidar-common/lidar-common.iml
 lidargen-provider/lidargen-provider.iml
+
+

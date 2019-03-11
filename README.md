@@ -25,6 +25,8 @@ To setup your Arrowhead Framework follow steps 1. through 3. at:
 
 https://github.com/arrowhead-f/core-java/blob/master/documentation/Debian%20Packages/DEBIAN-INSTALL.md
 
+**NOTE:** The installation process will show prompts asking for input parameters. Certificate passwords need to be at
+least 6 character long!
 
 ## 2. Clone repo and go to folder
 Installation guide for Arrowhead Framework (Java) can be found at:
@@ -34,7 +36,7 @@ https://github.com/arrowhead-f/core-java/blob/master/documentation/Debian%20Pack
 This process is recommended on your regular development machine,
 ### Linux
  ```sh
-git clone --depth=1 https://github.com/arrowhead-f/core-java.git -b master
+git clone --depth=1 https://github.com/arrowhead-f/core.java.git -b master
 ```
  ```sh
 cd core-java && mvn package
@@ -48,8 +50,6 @@ cd ./target
 ```sh
 sudo dpkg -i arrowhead-*.deb
 ```
-**NOTE:** The installation process will show prompts asking for input parameters. Certificate passwords need to be at
-least 6 character long!
 ### MacOS
  ```sh
 git clone --depth=1 https://github.com/arrowhead-f/core.java.git -b master
@@ -77,7 +77,7 @@ Solution found at:
 
 https://stackoverflow.com/questions/4764611/java-security-invalidalgorithmparameterexception-the-trustanchors-parameter-mus#se
 
-The command for installing java JDK 11 might install JDK 10 instead. 
+The command for installing java JRE 11 might install JRE 10 instead. 
 If it does that do this to get the correct version:
  ```sh
 sudo add-apt-repository ppa:openjdk-r/ppa \
