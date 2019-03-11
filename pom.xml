@@ -14,7 +14,6 @@
         <module>detector-provider</module>
         <module>lidar-common</module>
         <module>lidargen-provider</module>
-        <module>hmi-subscriber</module>
     </modules>
 
     <properties>

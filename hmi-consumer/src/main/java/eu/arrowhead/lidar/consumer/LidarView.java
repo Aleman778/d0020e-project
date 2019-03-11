@@ -1,4 +1,4 @@
-package eu.arrowhead.lidar.common.hmi;
+package eu.arrowhead.lidar.consumer;
 
 import eu.arrowhead.lidar.common.LidarPoint;
 
@@ -32,11 +32,11 @@ public class LidarView extends JPanel {
 
     public void selectPoint(int x, int y) {
         selected = null;
-        HMIApplication.window.restoreStatus();
+        HMIConsumer.window.restoreStatus();
         for (LidarPoint p : points) {
             if (getBounds(p).contains(x, y)) {
                 String info = "Selected data point - distance: " + p.distance + " meters, angle: " + Math.toDegrees(p.angle) + " degrees";
-                HMIApplication.window.setStatus(info);
+                HMIConsumer.window.setStatus(info);
                 selected = new LidarPoint(p);
             }
         }
