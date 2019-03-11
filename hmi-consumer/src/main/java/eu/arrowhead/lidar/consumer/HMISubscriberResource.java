@@ -6,6 +6,7 @@ import eu.arrowhead.common.api.server.ArrowheadResource;
 import eu.arrowhead.common.exception.ArrowheadException;
 import eu.arrowhead.common.model.Event;
 import eu.arrowhead.lidar.common.LidarReadout;
+import eu.arrowhead.lidar.common.hmi.HMIApplication;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -29,7 +30,7 @@ public class HMISubscriberResource extends ArrowheadResource {
     @Path("notify")
     public Response receiveEvent(Event event) {
         LidarReadout readout = ArrowheadConverter.json().fromString(event.getPayload(), LidarReadout.class);
-        HMIConsumer.window.callback(readout.data);
+        HMIApplication.window.callback(readout.data);
         return Response.ok().build();
     }
 }
