@@ -8,23 +8,10 @@ public class DetectionReadout {
     private int id;
     private double time;
 
-    public DetectionReadout() {
+    public DetectionReadout(boolean isDetected, int id) {
 
-        ObjectDetection object = new ObjectDetection();
-        this.isDetected = object.detection();
-        this.id = object.getId();
+        this.isDetected = isDetected;
+        this.id = id;
         this.time = Instant.now().getEpochSecond();
-    }
-
-    public int getId(){
-        return this.id;
-    }
-
-    public boolean getDetected(){
-        return this.isDetected;
-    }
-
-    public double getTime(){
-        return this.time;
     }
 }
