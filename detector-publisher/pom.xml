@@ -74,7 +74,7 @@
                         </manifestEntries>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>eu.arrowhead.detector.DetectionPublisherMain</mainClass>
+                            <mainClass>eu.arrowhead.detector.publisher.DetectionPublisherMain</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
