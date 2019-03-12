@@ -1,6 +1,5 @@
 package eu.arrowhead.lidar.common;
 
-import eu.arrowhead.lidar.common.LidarPoint;
 import java.util.ArrayList;
 
 
