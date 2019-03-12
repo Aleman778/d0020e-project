@@ -16,15 +16,15 @@ public class DetectionReadout {
         this.time = Instant.now().getEpochSecond();
     }
     
-    public getId(){
+    public int getId(){
         return this.id;
     }
     
-    public getDetected(){
+    public boolean getDetected(){
         return this.isDetected;
     }
     
-    public getTime(){
+    public double getTime(){
         return this.time;
     }
 }
