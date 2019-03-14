@@ -34,12 +34,4 @@ public class LidarServer {
     public int getPort() {
         return this.server.getLocalPort();
     }
-    public static void main(String[] args) throws Exception {
-        MyServerSocket app = new MyServerSocket(args[0]);
-        System.out.println("\r\nRunning Server: " + 
-                "Host=" + app.getSocketAddress().getHostAddress() + 
-                " Port=" + app.getPort());
-        
-        app.listen();
-    }
 }
