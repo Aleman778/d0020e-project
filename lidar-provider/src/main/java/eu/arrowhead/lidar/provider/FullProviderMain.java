@@ -94,7 +94,9 @@ public class FullProviderMain extends ArrowheadClientMain {
             customResponsePayload = props.getProperty("custom_payload");
         }
 
+        LidarResource.start();
         listenForInput();
+
     }
 
     @Override
