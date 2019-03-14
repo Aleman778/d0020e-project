@@ -7,13 +7,14 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
+package eu.arrowhead.client.common.model;
 
 public class CertificateSigningRequest {
 
   private String encodedCertRequest;
 
-  public CertificateSigningRequest() {}
+  public CertificateSigningRequest() {
+  }
 
   public CertificateSigningRequest(String encodedCertRequest) {
     this.encodedCertRequest = encodedCertRequest;

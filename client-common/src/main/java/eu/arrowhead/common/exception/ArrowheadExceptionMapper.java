@@ -7,21 +7,18 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
-
-import org.apache.log4j.Logger;
-import org.glassfish.jersey.server.ContainerRequest;
-import org.glassfish.jersey.server.ContainerResponse;
+package eu.arrowhead.client.common.exception;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import org.glassfish.jersey.server.ContainerRequest;
+import org.glassfish.jersey.server.ContainerResponse;
 
 @Provider
-public class ArrowheadExceptionMapper implements ExceptionMapper<ArrowheadRuntimeException> {
-  protected final Logger log = Logger.getLogger(getClass());
+public class ArrowheadExceptionMapper implements ExceptionMapper<ArrowheadException> {
 
   @Inject
   private javax.inject.Provider<ContainerRequest> requestContext;
@@ -29,8 +26,8 @@ public class ArrowheadExceptionMapper implements ExceptionMapper<ArrowheadRuntim
   private javax.inject.Provider<ContainerResponse> responseContext;
 
   @Override
-  public Response toResponse(ArrowheadRuntimeException ex) {
-    log.warn("Replying with error message", ex);
+  public Response toResponse(ArrowheadException ex) {
+    ex.printStackTrace();
     String origin =
         ex.getOrigin() != null ? ex.getOrigin() : (requestContext.get() != null ? requestContext.get().getAbsolutePath().toString() : "unknown");
     int errorCode = (ex.getErrorCode() == 0 && responseContext.get() != null) ? responseContext.get().getStatus() : ex.getErrorCode();

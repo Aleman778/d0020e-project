@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
 public class ErrorMessage {
 

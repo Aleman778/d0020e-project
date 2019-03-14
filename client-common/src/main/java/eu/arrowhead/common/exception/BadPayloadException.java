@@ -7,12 +7,12 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
 /**
  * Thrown if a resource receives a HTTP payload which have missing mandatory fields.
  */
-public class BadPayloadException extends ArrowheadRuntimeException {
+public class BadPayloadException extends ArrowheadException {
 
   public BadPayloadException(final String msg, final int errorCode, final String origin, final Throwable cause) {
     super(msg, errorCode, origin, cause);

@@ -7,31 +7,28 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
-
-import org.apache.log4j.Logger;
-import org.glassfish.jersey.server.ContainerRequest;
+package eu.arrowhead.client.common.exception;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import org.glassfish.jersey.server.ContainerRequest;
 
 @Provider
 public class ConstraintViolationExceptionMapper implements ExceptionMapper<ConstraintViolationException> {
-  protected final Logger log = Logger.getLogger(getClass());
 
   @Inject
   private javax.inject.Provider<ContainerRequest> requestContext;
 
   @Override
-  public Response toResponse(ConstraintViolationException ex) {
-    log.warn("Replying with error message", ex);
+  public Response toResponse(ConstraintViolationException exception) {
+    exception.printStackTrace();
     int errorCode = 404; //Bad Request
     String origin = requestContext.get() != null ? requestContext.get().getAbsolutePath().toString() : "unknown";
 
-    ErrorMessage errorMessage = new ErrorMessage(ex.getMessage(), errorCode, ExceptionType.VALIDATION, origin);
+    ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(), errorCode, ExceptionType.VALIDATION, origin);
     return Response.status(errorCode).entity(errorMessage).header("Content-type", "application/json").build();
   }
 }

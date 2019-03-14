@@ -1,4 +1,4 @@
-package eu.arrowhead.common.misc;
+package eu.arrowhead.client.common.misc;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;

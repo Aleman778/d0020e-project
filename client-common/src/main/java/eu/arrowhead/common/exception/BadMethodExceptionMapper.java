@@ -7,10 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
-
-import org.apache.log4j.Logger;
-import org.glassfish.jersey.server.ContainerRequest;
+package eu.arrowhead.client.common.exception;
 
 import javax.inject.Inject;
 import javax.ws.rs.NotAllowedException;
@@ -18,16 +15,16 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import org.glassfish.jersey.server.ContainerRequest;
 
 @Provider
 public class BadMethodExceptionMapper implements ExceptionMapper<NotAllowedException> {
-  protected final Logger log = Logger.getLogger(getClass());
 
   @Inject
   private javax.inject.Provider<ContainerRequest> requestContext;
 
   public Response toResponse(NotAllowedException ex) {
-    log.warn("Replying with error message", ex);
+    ex.printStackTrace();
     ErrorMessage errorMessage;
     if (ex.getMessage() != null) {
       errorMessage = new ErrorMessage(ex.getMessage(), 405, ExceptionType.BAD_METHOD, requestContext.get().getBaseUri().toString());

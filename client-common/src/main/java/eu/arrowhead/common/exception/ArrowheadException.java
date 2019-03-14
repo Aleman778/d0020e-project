@@ -7,9 +7,9 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
-public class ArrowheadException extends Exception {
+public class ArrowheadException extends RuntimeException {
 
   private ExceptionType exceptionType = ExceptionType.ARROWHEAD;
   private final int errorCode;

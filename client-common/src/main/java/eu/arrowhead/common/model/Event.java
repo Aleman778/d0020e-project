@@ -7,10 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
-
-import eu.arrowhead.common.api.ArrowheadConverter;
-import org.glassfish.jersey.internal.guava.MoreObjects;
+package eu.arrowhead.client.common.model;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -27,42 +24,9 @@ public class Event {
   public Event() {
   }
 
-  public Event(String type, String payload) {
-    this.type = type;
-    this.payload = payload;
-    this.timestamp = ZonedDateTime.now();
-  }
-
   public Event(String type, String payload, ZonedDateTime timestamp, Map<String, String> eventMetadata) {
     this.type = type;
     this.payload = payload;
-    this.timestamp = timestamp;
-    this.eventMetadata = eventMetadata;
-  }
-
-  public Event(String type, Object payload) {
-    this.type = type;
-    this.payload = ArrowheadConverter.json().toString(payload);
-    this.timestamp = ZonedDateTime.now();
-  }
-
-  public Event(String type, Object payload, ZonedDateTime timestamp, Map<String, String> eventMetadata) {
-    this.type = type;
-    this.payload = ArrowheadConverter.json().toString(payload);
-    this.timestamp = timestamp;
-    this.eventMetadata = eventMetadata;
-  }
-
-  public Event(String type, Object payload, String anInterface) {
-    this.type = type;
-    this.payload = ArrowheadConverter.toString(anInterface, payload);
-    this.timestamp = ZonedDateTime.now();
-  }
-
-  public Event(String type, Object payload, String anInterface, ZonedDateTime timestamp,
-               Map<String, String> eventMetadata) {
-    this.type = type;
-    this.payload = ArrowheadConverter.toString(anInterface, payload);
     this.timestamp = timestamp;
     this.eventMetadata = eventMetadata;
   }

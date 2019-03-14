@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
+package eu.arrowhead.client.common.model;
 
 public enum OrchestratorWarnings {
   FROM_OTHER_CLOUD, TTL_EXPIRING, TTL_EXPIRED, TTL_UNKNOWN

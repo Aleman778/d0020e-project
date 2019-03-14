@@ -7,12 +7,12 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
 /**
  * Used by the legacy Service Registry, to handle DNS-SD related exceptions.
  */
-public class DnsException extends ArrowheadRuntimeException {
+public class DnsException extends ArrowheadException {
 
   public DnsException(final String msg, final int errorCode, final String origin, final Throwable cause) {
     super(msg, errorCode, origin, cause);

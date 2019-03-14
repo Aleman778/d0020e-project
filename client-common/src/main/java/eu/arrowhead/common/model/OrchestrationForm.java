@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
+package eu.arrowhead.client.common.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,10 +96,6 @@ public class OrchestrationForm {
 
   public void setWarnings(List<OrchestratorWarnings> warnings) {
     this.warnings = warnings;
-  }
-
-  public boolean isSecure() {
-    return service.getServiceMetadata().containsKey(ServiceMetadata.Keys.SECURITY);
   }
 
 }

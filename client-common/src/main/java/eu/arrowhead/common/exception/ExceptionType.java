@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
 public enum ExceptionType {
   ARROWHEAD, AUTH, BAD_METHOD, BAD_PAYLOAD, BAD_URI, DATA_NOT_FOUND, DNSSD, DUPLICATE_ENTRY, GENERIC, JSON_PROCESSING, UNAVAILABLE, VALIDATION

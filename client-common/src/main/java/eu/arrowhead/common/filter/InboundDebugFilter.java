@@ -7,12 +7,11 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.filter;
+package eu.arrowhead.client.common.filter;
 
-import eu.arrowhead.common.misc.Utility;
-import org.apache.log4j.Logger;
-
+import eu.arrowhead.client.common.Utility;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import javax.annotation.Priority;
@@ -24,14 +23,13 @@ import javax.ws.rs.ext.Provider;
 @Provider
 @Priority(Priorities.USER)
 public class InboundDebugFilter implements ContainerRequestFilter {
-  protected final Logger log = Logger.getLogger(getClass());
 
   @Override
-  public void filter(ContainerRequestContext requestContext) {
+  public void filter(ContainerRequestContext requestContext) throws IOException {
     if (Boolean.valueOf(System.getProperty("debug_mode", "false"))) {
-      log.info("New " + requestContext.getMethod() + " request at: " + requestContext.getUriInfo().getRequestUri().toString());
+      System.out.println("New " + requestContext.getMethod() + " request at: " + requestContext.getUriInfo().getRequestUri().toString());
       String prettyJson = Utility.getRequestPayload(requestContext.getEntityStream());
-      log.info(prettyJson);
+      System.out.println(prettyJson);
 
       InputStream in = new ByteArrayInputStream(prettyJson.getBytes(StandardCharsets.UTF_8));
       requestContext.setEntityStream(in);
