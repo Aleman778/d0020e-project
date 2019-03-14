@@ -28,6 +28,8 @@ public class LidarResource {
 
     static final String SERVICE_URI = "lidar";
 
+    private static LidarServer server;
+
     @POST
     @Path(SERVICE_URI)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -42,5 +44,22 @@ public class LidarResource {
         else {
             providerName = "InsecureLidar";
         }
+    }
+
+    public static void start() {
+        try {
+            server = new LidarServer(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.listen();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        serverThread.start();
     }
 }
