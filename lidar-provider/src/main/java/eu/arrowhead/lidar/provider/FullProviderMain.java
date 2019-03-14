@@ -56,7 +56,7 @@ public class FullProviderMain extends ArrowheadClientMain {
     }
 
     private FullProviderMain(String[] args) {
-        Set<Class<?>> classes = new HashSet<>(Arrays.asList(ServoResource.class));
+        Set<Class<?>> classes = new HashSet<>(Arrays.asList(LidarResource.class));
         String[] packages = {"eu.arrowhead.client.common"};
         init(ClientType.PROVIDER, args, classes, packages);
 
@@ -146,7 +146,7 @@ public class FullProviderMain extends ArrowheadClientMain {
         } else {
             String serviceDef = props.getProperty("service_name");
             String serviceUri = props.getProperty("service_uri");
-            if (!serviceUri.equals(ServoResource.SERVICE_URI)) {
+            if (!serviceUri.equals(LidarResource.SERVICE_URI)) {
                 System.out.println("Hej");
                 System.out.println("WARNING: Service URI in config file does not match REST sub-path.");
             }
