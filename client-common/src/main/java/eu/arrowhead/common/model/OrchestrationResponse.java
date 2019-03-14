@@ -7,12 +7,8 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
+package eu.arrowhead.client.common.model;
 
-import eu.arrowhead.common.exception.DataNotFoundException;
-import eu.arrowhead.common.exception.NotFoundException;
-
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +31,4 @@ public class OrchestrationResponse {
     this.response = response;
   }
 
-  public OrchestrationForm getFirst() {
-      if (getResponse().isEmpty())
-          throw new DataNotFoundException("No service found");
-
-      return getResponse().get(0);
-  }
 }

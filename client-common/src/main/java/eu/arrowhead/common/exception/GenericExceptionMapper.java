@@ -7,21 +7,18 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
-
-import org.apache.log4j.Logger;
-import org.glassfish.jersey.server.ContainerRequest;
-import org.glassfish.jersey.server.ContainerResponse;
+package eu.arrowhead.client.common.exception;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import org.glassfish.jersey.server.ContainerRequest;
+import org.glassfish.jersey.server.ContainerResponse;
 
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Exception> {
-  protected final Logger log = Logger.getLogger(getClass());
 
   @Inject
   private javax.inject.Provider<ContainerRequest> requestContext;
@@ -30,7 +27,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Exception> {
 
   @Override
   public Response toResponse(Exception ex) {
-    log.warn("Replying with error message", ex);
+    ex.printStackTrace();
     int errorCode = 500; //Internal Server Error
     String origin = requestContext.get() != null ? requestContext.get().getAbsolutePath().toString() : "unknown";
     if (responseContext.get() != null && responseContext.get().getStatusInfo().getFamily() != Family.OTHER) {

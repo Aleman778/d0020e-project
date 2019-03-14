@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.filter;
+package eu.arrowhead.client.common.filter;
 
 import java.security.Principal;
 import java.security.cert.X509Certificate;
@@ -38,8 +38,8 @@ public class SecurityFilter implements ContainerRequestFilter {
 
   class Authorizer implements SecurityContext {
 
-    private final String user;
-    private final Principal principal;
+    private String user;
+    private Principal principal;
 
     Authorizer(final String user) {
       this.user = user;

@@ -7,7 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
+package eu.arrowhead.client.common.model;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;

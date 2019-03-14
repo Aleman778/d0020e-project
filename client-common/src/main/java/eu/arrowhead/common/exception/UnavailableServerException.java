@@ -7,12 +7,12 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.exception;
+package eu.arrowhead.client.common.exception;
 
 /**
  * Thrown when a HTTP request times out because the endpoint is not available.
  */
-public class UnavailableServerException extends ArrowheadRuntimeException {
+public class UnavailableServerException extends ArrowheadException {
 
   public UnavailableServerException(final String msg, final int errorCode, final String origin, final Throwable cause) {
     super(msg, errorCode, origin, cause);

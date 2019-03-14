@@ -7,10 +7,7 @@
  *  national funding authorities from involved countries.
  */
 
-package eu.arrowhead.common.model;
-
-import eu.arrowhead.common.api.server.ArrowheadHttpServer;
-import eu.arrowhead.common.misc.ArrowheadProperties;
+package eu.arrowhead.client.common.model;
 
 import java.time.LocalDateTime;
 
@@ -23,18 +20,6 @@ public class ServiceRegistryEntry {
   private Boolean udp;
   private LocalDateTime endOfValidity;
   private Integer version = 1;
-
-  public static ServiceRegistryEntry createFromProperties(ArrowheadHttpServer server) {
-    return createFromProperties(ArrowheadProperties.loadDefault(), server);
-  }
-
-  private static ServiceRegistryEntry createFromProperties(ArrowheadProperties props, ArrowheadHttpServer server) {
-    final ArrowheadService service = ArrowheadService.createFromProperties(props);
-    final ArrowheadSystem provider = ArrowheadSystem.createFromProperties(props, server);
-    final String serviceUri = props.getServiceUri();
-
-    return new ServiceRegistryEntry(service, provider, serviceUri);
-  }
 
   public ServiceRegistryEntry() {
   }
