@@ -11,9 +11,9 @@ public class LidarServer {
 
     public LidarServer(String ipAddress) throws Exception {
         if (ipAddress != null && !ipAddress.isEmpty()) 
-          this.server = new ServerSocket(3777, 1, InetAddress.getByName(ipAddress));
+          this.server = new ServerSocket(37777, 1, InetAddress.getByName(ipAddress));
         else 
-          this.server = new ServerSocket(3777, 1, InetAddress.getLocalHost());
+          this.server = new ServerSocket(37777, 1, InetAddress.getLocalHost());
     }
 
     public void listen() throws Exception {
