@@ -65,7 +65,7 @@ public static HMIWindow window;
     //long startTime = System.currentTimeMillis();
 
     //Compile the payload, that needs to be sent to the Orchestrator - THIS METHOD SHOULD BE MODIFIED ACCORDING TO YOUR NEEDS
-    ServiceRequestForm lidarSRF = compileSRF("LidarSensor");
+    ServiceRequestForm lidarSRF = compileSRF("LidarProvider");
 
     //Sending the orchestration request and parsing the response
     String lidarUrl;

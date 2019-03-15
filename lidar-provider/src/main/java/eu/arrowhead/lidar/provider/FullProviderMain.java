@@ -94,6 +94,11 @@ public class FullProviderMain extends ArrowheadClientMain {
             customResponsePayload = props.getProperty("custom_payload");
         }
 
+        try {
+            new LidarServer(null).listen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         listenForInput();
     }
 
