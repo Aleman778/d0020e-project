@@ -28,6 +28,9 @@ import java.util.Map;
 import java.util.ServiceConfigurationError;
 import java.util.Set;
 import javax.ws.rs.core.UriBuilder;
+import java.net.*;
+import java.io.*;
+
 
 /* This version of the ProviderMain class has some extra functionalities, that are not mandatory to have:
     1) Secure (HTTPS) mode
@@ -52,6 +55,7 @@ public class FullProviderMain extends ArrowheadClientMain {
     private static List<OrchestrationStore> storeEntry = new ArrayList<>();
 
     public static void main(String[] args) {
+        System.setProperty("java.net.preferredIPv4Stack", "true");
         new FullProviderMain(args);
     }
 
@@ -94,11 +98,8 @@ public class FullProviderMain extends ArrowheadClientMain {
             customResponsePayload = props.getProperty("custom_payload");
         }
 
-        try {
-            new LidarServer(null).listen();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LidarResource.start();
+        
         listenForInput();
     }
 

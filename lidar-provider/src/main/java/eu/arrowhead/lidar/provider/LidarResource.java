@@ -10,7 +10,12 @@
 package eu.arrowhead.lidar.provider;
 
 
+import eu.arrowhead.lidar.common.LidarReadout;
+import eu.arrowhead.lidar.common.LidarPoint;
+
+
 import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -21,6 +26,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.util.Random;
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Path("/")
 //REST service example
@@ -28,38 +34,44 @@ public class LidarResource {
 
     static final String SERVICE_URI = "lidar";
 
-    private static LidarServer server;
+    static final LidarReadout readout = new LidarReadout();
 
-    @POST
+
+    @GET
     @Path(SERVICE_URI)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void postPos(@Valid int pos,@Context SecurityContext context, @QueryParam("token") String token, @QueryParam("signature") String signature) {
-
-        String providerName;
-
-        if (context.isSecure()) {
-            RequestVerification.verifyRequester(context, token, signature);
-            providerName = "SecureLidar";
-        }
-        else {
-            providerName = "InsecureLidar";
-        }
+    public Response getIt(@Context SecurityContext context, @QueryParam("token") String token, @QueryParam("signature") String signature) {
+        return Response.status(200).entity(readout).build();
     }
 
     public static void start() {
-        try {
-            server = new LidarServer(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Thread serverThread = new Thread(() -> {
+        Thread thread = new Thread(() -> {
             try {
-                server.listen();
+                LidarServer server = new LidarServer(null);
+                System.out.println("Waiting for connection...");
+                server.accept();
+                System.out.println("Connected!");
+                while (true) {
+                    String data = server.readLine();
+                    if (data != null && !data.isEmpty()) {
+                        String[] dist = data.split(",");
+                        ArrayList<LidarPoint> result = new ArrayList<>();
+
+                        int numPoints = dist.length;
+                        double angle = 0;
+                        double increment = (2.0 * Math.PI) / numPoints;
+
+                        for(int i = 0; i < numPoints; i++){
+                            result.add(new LidarPoint(Double.parseDouble(dist[i]), angle));
+                            angle += increment;
+                            System.out.println(Double.parseDouble(dist[i]));
+                        }
+                        readout.data = result;
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-        serverThread.start();
+        thread.start();
     }
 }

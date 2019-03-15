@@ -1,0 +1,4 @@
+eu/arrowhead/lidar/provider/LidarResource.class
+eu/arrowhead/lidar/provider/LidarServer.class
+eu/arrowhead/lidar/provider/RequestVerification.class
+eu/arrowhead/lidar/provider/FullProviderMain.class

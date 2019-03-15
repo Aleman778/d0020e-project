@@ -8,25 +8,25 @@ import java.net.Socket;
 
 public class LidarServer {
     private ServerSocket server;
+    private Socket client;
+    private BufferedReader reader;
 
     public LidarServer(String ipAddress) throws Exception {
         if (ipAddress != null && !ipAddress.isEmpty()) 
           this.server = new ServerSocket(37777, 1, InetAddress.getByName(ipAddress));
         else 
           this.server = new ServerSocket(37777, 1, InetAddress.getLocalHost());
+
+        System.out.println(InetAddress.getLocalHost());
     }
 
-    public void listen() throws Exception {
-        String data = null;
-        Socket client = this.server.accept();
-        String clientAddress = client.getInetAddress().getHostAddress();
-        System.out.println("\r\nNew connection from " + clientAddress);
-        
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(client.getInputStream()));        
-        while ( (data = in.readLine()) != null ) {
-            System.out.println("\r\nMessage from " + clientAddress + ": " + data);
-        }
+    public void accept() throws Exception {
+        client = server.accept();
+        reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+    }
+
+    public String readLine() throws Exception {
+        return reader.readLine();
     }
     public InetAddress getSocketAddress() {
         return this.server.getInetAddress();
