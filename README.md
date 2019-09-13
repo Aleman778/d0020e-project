@@ -1,5 +1,6 @@
-# D0020E - Software function reuse
+# D0020E - Software Function Reuse
 Software Function Reuse demonstration using Arrowhead Framework and ROS with LiDAR sensor.
+This was our project in the course D0020E Project in Computer Science and Engineering. This project was not successful, It is not working properly. Due to issues with the Arrowhead Framework not working and the given LiDAR sensor not responding we were not able to finish in time. I do not recommend that you work with this implementation, you can use it as reference but it is better to start from scratch.
 
 # Ubuntu with ROS library
 Start by setting up two separate systems with Ubuntu 16.04 and ROS library, install manually or get your pre-installed
